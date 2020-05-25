@@ -5,11 +5,6 @@ const DATE_FORMAT_STRING = 'Y-m-dT00:00:00Z';
 const DATE_TODAY_STRING = datetime.create().format(DATE_FORMAT_STRING);
 const DATE_TODAY = datetime.create(DATE_TODAY_STRING);
 
-const REPOSITORIES = [
-  {owner: 'frontendbr', repo: 'vagas'},
-  {owner: 'backend-br', repo: 'vagas'}
-];
-
 function getURLFromRepository({owner, repo}, date) {
   return `https://api.github.com/repos/${owner}/${repo}/issues?since=${date}`;
 }
@@ -46,10 +41,10 @@ function filterJobs(date) {
   });
 }
 
-function getJobsPromiseFromGitHub(date) {
+function getJobsPromiseFromGitHub(repositories, date) {
   const promises = [];
 
-  REPOSITORIES.forEach((repository) => promises.push(
+  repositories.forEach((repository) => promises.push(
     fetch(getURLFromRepository(repository, date.toISOString())).then(
       convertResponseToJSON
     ).then(filterIssues).then(convertGitHubJSONToJobs).then(filterJobs(date))
@@ -58,8 +53,10 @@ function getJobsPromiseFromGitHub(date) {
   return Promise.all(promises);
 }
 
-function getJobsPromise(date) {
-  return getJobsPromiseFromGitHub(date).then((jobs) => jobs.flat());
+function getJobsPromise(repositories, date) {
+  return getJobsPromiseFromGitHub(repositories, date).then(
+    (jobs) => jobs.flat()
+  );
 }
 
 module.exports = getJobsPromise;
