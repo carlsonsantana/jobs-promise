@@ -22,8 +22,9 @@ function filterIssues(issuesJSON) {
 }
 
 function convertGitHubJSONToJobs(issuesJSON) {
-  return issuesJSON.map(({title, body, html_url, created_at}) => {
+  return issuesJSON.map(({id, title, body, html_url, created_at}) => {
     return {
+      id: `github-${id}`,
       title,
       description: body,
       url: html_url,
