@@ -1,5 +1,6 @@
 const datetime = require('node-datetime');
 const fetch = require('node-fetch');
+const stripHtmlComments = require('strip-html-comments');
 
 const DATE_FORMAT_STRING = 'Y-m-dT00:00:00Z';
 const DATE_TODAY_STRING = datetime.create().format(DATE_FORMAT_STRING);
@@ -26,7 +27,7 @@ function convertGitHubJSONToJobs(issuesJSON) {
     return {
       id: `github-${id}`,
       title,
-      description: body,
+      description: stripHtmlComments(body),
       url: html_url,
       publishedAt: new Date(datetime.create(created_at).getTime())
     };

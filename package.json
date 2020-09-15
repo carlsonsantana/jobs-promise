@@ -23,7 +23,8 @@
   "homepage": "https://github.com/carlsonsantana/jobs-promise#readme",
   "dependencies": {
     "node-datetime": "^2.1.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "strip-html-comments": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
