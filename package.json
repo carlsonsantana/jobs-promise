@@ -1,16 +1,15 @@
 {
-  "name": "remote-job-notifier",
+  "name": "jobs-promise",
   "version": "1.0.0",
-  "description": "Notify about remote jobs",
+  "description": "Library to return a promise with jobs opportunities.",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "lint": "eslint src/",
+    "lint": "eslint src/ index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/carlsonsantana/remote-job-notifier.git"
+    "url": "git+https://github.com/carlsonsantana/jobs-promise.git"
   },
   "keywords": [
     "remote-job",
@@ -19,13 +18,13 @@
   "author": "Carlson Santana Cruz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/carlsonsantana/remote-job-notifier/issues"
+    "url": "https://github.com/carlsonsantana/jobs-promise/issues"
   },
-  "homepage": "https://github.com/carlsonsantana/remote-job-notifier#readme",
+  "homepage": "https://github.com/carlsonsantana/jobs-promise#readme",
   "dependencies": {
-    "dialog": "^0.3.1",
     "node-datetime": "^2.1.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "strip-html-comments": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^7.0.0",

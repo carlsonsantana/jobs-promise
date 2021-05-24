@@ -1,2 +1,3 @@
-# remote-job-notifier
-Notify about remote jobs
+# Jobs Promise
+
+Library to return a promise with jobs opportunities.
